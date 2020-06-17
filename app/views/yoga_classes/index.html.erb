@@ -1,0 +1,14 @@
+<h1>Yoga Classes</h1>
+
+<% @yoga_classes.each do |c| %>
+<%= c.name %>
+<%= c.length %>
+<%= c.date %>
+<%= c.time %>
+<%= c.teacher_id %>
+<%= c.studio_id %>
+<%= c.difficulty %>
+<% end %>
+
+<%= link_to "Add a class", new_yoga_class_path %>
+

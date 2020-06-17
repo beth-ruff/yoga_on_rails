@@ -1,1 +1,6 @@
-<h1>Welcome to the Yoga Studio application!</h1>
+<h1>Welcome to Yoga on Rails!</h1>
+
+<% if user_signed_in? %>
+<%= link_to "Yoga Class Index", yoga_classes_path %>
+<%= link_to "Studio Index", studios_path %>
+<% end %>

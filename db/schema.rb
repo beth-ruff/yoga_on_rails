@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_001019) do
+ActiveRecord::Schema.define(version: 2020_06_16_213648) do
+
+  create_table "studios", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.integer "phone_number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "teachers", force: :cascade do |t|
+    t.string "name"
+    t.string "bio"
+    t.string "mantra"
+    t.integer "studio_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,6 +42,19 @@ ActiveRecord::Schema.define(version: 2020_06_16_001019) do
     t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "yoga_classes", force: :cascade do |t|
+    t.string "name"
+    t.integer "length"
+    t.string "difficulty"
+    t.integer "user_id"
+    t.integer "studio_id"
+    t.integer "teacher_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.date "date"
+    t.time "time"
   end
 
 end

@@ -1,0 +1,19 @@
+<h1>Add a new class</h1>
+
+<%= form_for @yoga_class do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<%= f.label :length%>
+<%= f.text_field :length %>
+<%= f.label :difficulty%>
+<%= f.text_field :difficulty %>
+<%= f.label :date%>
+<%= f.text_field :date %>
+<%= f.label :time %>
+<%= f.text_field :time %>
+<%= f.label :studio_name %>
+<%= f.text_field :studio_name %>
+<%= f.label :teacher_name%>
+<%= f.text_field :teacher_name %>
+<%= f.submit %>
+<% end %>
