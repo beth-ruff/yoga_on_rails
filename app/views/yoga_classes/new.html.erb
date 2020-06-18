@@ -2,18 +2,29 @@
 
 <%= form_for @yoga_class do |f| %>
 <%= f.label :name %>
-<%= f.text_field :name %>
+<%= f.text_field :name %><br>
 <%= f.label :length%>
-<%= f.text_field :length %>
+<%= f.text_field :length %><br>
 <%= f.label :difficulty%>
-<%= f.text_field :difficulty %>
+<%= f.select(:difficulty, YogaClass::DIFFICULTY_LIST )%><br>
 <%= f.label :date%>
-<%= f.text_field :date %>
+<%= f.date_field :date %><br>
 <%= f.label :time %>
-<%= f.text_field :time %>
-<%= f.label :studio_name %>
-<%= f.text_field :studio_name %>
-<%= f.label :teacher_name%>
-<%= f.text_field :teacher_name %>
+<%= f.time_field :time %><br>
+<%= f.label "Select a Studio" %>
+<%= f.collection_select :studio_id, Studio.all, :id, :name, include_blank: true %><br>
+
+<h3>Or Add a New Studio:</h3>
+<%= f.fields_for :studio, @studio do |studio| %>
+    <%= studio.label "Or create a new one:" %><br>
+    <%= studio.label :name %>
+    <%= studio.text_field :name %><br>
+    <%= studio.label :address %>
+    <%= studio.text_field :address %><br>
+    <%= studio.label :phone_number %>
+    <%= studio.text_field :phone_number %><br>
+    <% end %>
+
 <%= f.submit %>
 <% end %>
+

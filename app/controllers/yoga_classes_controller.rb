@@ -1,22 +1,23 @@
 class YogaClassesController < ApplicationController
   before_action :authenticate_user!
-  # before_action :authorize_teacher, only: [:edit, :update]
 
   def index
-    @yoga_classes = YogaClass.all 
+    @yoga_classes = current_user.yoga_classes 
   end
 
   def new
-    @yoga_class = YogaClass.new 
+    @yoga_class = current_user.yoga_classes.build
+    @studio = @yoga_class.build_studio 
   end
 
   def create
-    @yoga_class = YogaClass.create(yoga_class_params)
-    redirect_to yoga_class_path(@yoga_class)
+    @yoga_class = current_user.yoga_classes.create(yoga_class_params)
+    redirect_to yoga_class_path(@yoga_class) 
   end
 
   def show 
-    @yoga_class = YogaClass.find_by(id: params[:id])
+    # binding.pry 
+    @yoga_class = current_user.yoga_classes.find_by(id: params[:id])
   end 
 
   def edit
@@ -31,7 +32,7 @@ class YogaClassesController < ApplicationController
   private
 
     def yoga_class_params
-      params.require(:yoga_class).permit(:name, :length, :date, :time, :difficulty, :studio_name, :teacher_name)
+      params.require(:yoga_class).permit(:user_id, :name, :length, :date, :time, :difficulty, :studio_id, studio_attributes: [:name, :address, :phone_number])
     end 
 
 end

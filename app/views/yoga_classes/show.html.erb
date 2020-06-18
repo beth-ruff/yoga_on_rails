@@ -1,5 +1,7 @@
-<h3><%= @yoga_class.length minute @yoga_class.name with @yoga_class.teacher_name%></h3>
-<p><%= @yoga_class.date %></p>
-<p><%= @yoga_class.time %></p>
-<p><%= @yoga_class.studio_name %></p>
-<p><%= @yoga_class.difficulty %></p>
+<h3><%= @yoga_class.length%> minute <%= @yoga_class.name %> with <%= @yoga_class.user.username %></h3>
+<p>Date: <%= @yoga_class.date %></p>
+<p>Time: <%= @yoga_class.time %></p>
+<p>Studio: <%= @yoga_class.studio.name %></p>
+<p>Level: <%= @yoga_class.difficulty %></p>
+
+<%= link_to "Back to Class Index", yoga_classes_path %>

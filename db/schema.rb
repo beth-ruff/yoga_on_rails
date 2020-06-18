@@ -10,21 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_213648) do
+ActiveRecord::Schema.define(version: 2020_06_17_214934) do
+
+  create_table "students", force: :cascade do |t|
+    t.string "name"
+    t.integer "yoga_class_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "studios", force: :cascade do |t|
     t.string "name"
     t.string "address"
     t.integer "phone_number"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "teachers", force: :cascade do |t|
-    t.string "name"
-    t.string "bio"
-    t.string "mantra"
-    t.integer "studio_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -48,13 +46,12 @@ ActiveRecord::Schema.define(version: 2020_06_16_213648) do
     t.string "name"
     t.integer "length"
     t.string "difficulty"
-    t.integer "user_id"
-    t.integer "studio_id"
-    t.integer "teacher_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.date "date"
     t.time "time"
+    t.integer "user_id"
+    t.integer "studio_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

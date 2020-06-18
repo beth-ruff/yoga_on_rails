@@ -1,6 +1,6 @@
-1. Welcome page links to classes index page and studios index page
-2. Index page has list of user's(teacher) yoga classes by day that link to the yoga class show page /yoga_classes
-3. Users(teachers) can add new yoga classes /yoga_classes/new *note: can select from existing studio or make a new studio 
+1. Welcome page links to classes index page and studios index page X
+2. Class Index page has list of user's(teacher) yoga classes by day that link to the yoga class show page /yoga_classes
+3. Users(teachers) can add new yoga classes /yoga_classes/new *note: can select from existing studio or make a new studio (nested form)
 4. User's/teacher's yoga class show page /yoga_classes/:id *note: "add student" button
 5. User/Teacher can add student to given yoga class /yoga_classes/:yoga_class_id/student/new 
 6. User's/teacher's yoga class show page /yoga_classes/:id *note: "add student" button

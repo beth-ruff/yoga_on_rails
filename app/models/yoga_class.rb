@@ -1,22 +1,9 @@
 class YogaClass < ApplicationRecord
     belongs_to :studio
     belongs_to :user
-    belongs_to :teacher
+    has_many :students
+    accepts_nested_attributes_for :studio, reject_if: :all_blank
 
-    def studio_name=(name)
-        self.studio = Studio.find_or_create_by(name: name)
-    end 
-
-    def studio_name 
-        self.studio ? self.studio.name : nil 
-    end 
-
-    def teacher_name=(name)
-        self.teacher = Teacher.find_or_create_by(name: name)
-    end 
-
-    def teacher_name 
-        self.teacher ? self.teacher.name : nil 
-    end 
+    DIFFICULTY_LIST = ["Beginner", "Intermediate", "Expert", "All Levels"]
 
 end

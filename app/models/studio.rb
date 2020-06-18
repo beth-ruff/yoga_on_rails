@@ -1,6 +1,5 @@
 class Studio < ApplicationRecord
-    has_many :classes 
-    has_many :users, through: :classes 
-    has_many :teachers
+    has_many :yoga_classes 
+    has_many :users, through: :yoga_classes 
 
 end
