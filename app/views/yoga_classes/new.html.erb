@@ -1,3 +1,18 @@
+<% if @yoga_class.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@yoga_class.errors.count, "error") %>
+      prohibited this yoga class from being saved:
+    </h2>
+ 
+    <ul>
+    <% @yoga_class.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <h1>Add a new class</h1>
 
 <%= form_for @yoga_class do |f| %>

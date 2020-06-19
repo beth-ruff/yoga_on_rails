@@ -4,5 +4,13 @@
 4. User's/teacher's yoga class show page /yoga_classes/:id *note: "add student" button X
 5. User/Teacher can add student to given yoga class /yoga_classes/:yoga_class_id/student/new X
 6. User's/teacher's yoga class show page /yoga_classes/:id *note: "add student" button X
-7. Index page has list of user's(teacher) studios that link to the studio show page /studios 
-8. User's/teacher's studio show page with their classes at that studio /studios/:studio_id/classes (nested route to index) (classes index = classes controller)
+7. Index page has list of user's(teacher) studios that link to the studio show page /studios X
+8. User's/teacher's studio show page with their classes at that studio /studios/:studio_id/classes (nested route to index) (classes index = classes controller) 
+
+
+To-DO:
+- fix class index page (list classes by day) X
+- add validations
+- AR scope method
+- partials / add edit class form 
+- CSS!

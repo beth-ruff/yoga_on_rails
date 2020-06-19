@@ -1,9 +1,13 @@
 <h1>Yoga Classes</h1>
 
-<% @yoga_classes.each do |c| %>
-<%# <%= c.name %>
-<%= link_to c.name, yoga_class_path(c) %><br>
+<% @yoga_classes.group_by(&:yoga_class_date).each do |yoga_class_date, yoga_class| %>
+<div id="day">
+    <h3><%= yoga_class_date %></h3>
+        <% yoga_class.each do |c| %>
+        <%= link_to c.name, yoga_class_path(c) %><br>
+    <% end %>
 <% end %>
+</div>
 <br></br>
 
 <%= link_to "Add a class", new_yoga_class_path %><br>
