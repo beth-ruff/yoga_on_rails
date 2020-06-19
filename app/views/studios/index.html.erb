@@ -3,3 +3,8 @@
 <% @studios.each do |s| %>
 <%= link_to s.name, studio_path(s) %><br>
 <% end %>
+
+<br></br>
+
+<%= link_to "Home", root_path %><br>
+<%= link_to "Yoga Class Index", yoga_classes_path %>
