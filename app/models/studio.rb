@@ -3,5 +3,5 @@ class Studio < ApplicationRecord
     has_many :users, through: :yoga_classes 
     validates :name, presence: true
     validates :address, presence: true
-    validates :phone_number, presence: true, length: { minimum: 10 }
+    validates :phone_number, length: { minimum: 10 }
 end

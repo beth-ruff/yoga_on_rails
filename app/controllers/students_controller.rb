@@ -12,7 +12,7 @@ class StudentsController < ApplicationController
           @student.save
           redirect_to yoga_class_path(@yoga_class)
         else 
-            redirect_to new_yoga_class_student_path(@yoga_class)
+            render :new
         end 
       end
     

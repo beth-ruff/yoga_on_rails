@@ -17,7 +17,7 @@ class YogaClassesController < ApplicationController
         @yoga_class.save
         redirect_to yoga_class_path(@yoga_class) 
       else 
-        redirect_to new_yoga_class_path
+        render :new
       end 
   end
 

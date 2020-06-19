@@ -1,21 +1,22 @@
-<% if @yoga_class.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(@yoga_class.errors.count, "error") %>
-      prohibited this yoga class from being saved:
-    </h2>
- 
-    <ul>
-    <% @yoga_class.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-
 <h1>Add a new class</h1>
 
 <%= form_for @yoga_class do |f| %>
+
+    <% if @yoga_class.errors.any? %>
+        <div id="error_explanation">
+            <h2>
+            <%= pluralize(@yoga_class.errors.count, "error") %>
+            prohibited this yoga class from being saved:
+            </h2>
+ 
+        <ul>
+            <% @yoga_class.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+        </ul>
+        </div>
+    <% end %>
+
 <%= f.label :name %>
 <%= f.text_field :name %><br>
 <%= f.label :length%>
@@ -40,10 +41,9 @@
     <%= studio.text_field :phone_number %><br>
     <% end %>
 
-<%= f.submit %>
+<%= f.submit "Create Yoga Class", class: "btn btn-large btn-primary" %>
 <% end %>
 
 <br></br>
-<%= link_to "Home", root_path %><br>
 <%= link_to "Back to Yoga Class Index", yoga_classes_path %>
 

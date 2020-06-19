@@ -1,7 +1,25 @@
 <h3>Add Student</h3>
 
 <%= form_for [@yoga_class, @student] do |f| %>
+
+<% if @student.errors.any? %>
+        <div id="error_explanation">
+            <h2>
+            <%= pluralize(@student.errors.count, "error") %>
+            prohibited this student from being saved:
+            </h2>
+ 
+        <ul>
+            <% @student.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+        </ul>
+        </div>
+    <% end %>
+
 <%= f.label :name %>
 <%= f.text_field :name %><br></br>
-<%= f.submit %>
+<%= f.submit "Add Student", class: "btn btn-large btn-primary"  %>
 <% end %>
+
+<%= link_to "Back to Yoga Class Index", yoga_classes_path %>
