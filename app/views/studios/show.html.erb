@@ -1,0 +1,11 @@
+<h3><%= @studio.name %></h3>
+
+<p>Address: <%= @studio.address %></p>
+<p>Phone Number: <%= @studio.phone_number %></p>
+
+<h4>Classes at this Studio: </h4>
+<% @studio.yoga_classes.each do |y| %>
+<li>
+<%= y.length%> minute <%= y.name %> with <%= y.user.username %>
+</li>
+<% end %>

@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
-  # get 'yoga_classes/index'
-  # get 'yoga_classes/new'
-  # get 'yoga_classes/create'
-  # get 'yoga_classes/edit'
-  # get 'yoga_classes/update'
-  # get 'yoga_classes/delete'
-  resources :yoga_classes
-  resources :studios
+  
+  resources :yoga_classes do 
+    resources :students, only: [:new, :create]
+  end 
+
+  resources :studios, only: [:index, :show]
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   devise_for :users, :controllers => {:registrations => 'registrations', :omniauth_callbacks => 'callbacks'}
 

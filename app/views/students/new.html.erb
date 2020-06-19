@@ -1,0 +1,7 @@
+<h3>Add Student</h3>
+
+<%= form_for [@yoga_class, @student] do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %><br></br>
+<%= f.submit %>
+<% end %>

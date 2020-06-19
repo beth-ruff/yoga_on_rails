@@ -1,19 +1,11 @@
 class StudiosController < ApplicationController
 
     def index
-       
-      end
+      @studios = current_user.studios
+    end
     
-      def new
-        
-      end
-    
-      def create
-      
-      end
-    
-      def show 
-       
-      end 
+    def show 
+       @studio = current_user.studios.find_by(id: params[:id])
+    end 
 
 end

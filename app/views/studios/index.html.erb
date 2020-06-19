@@ -1,0 +1,5 @@
+<h3><%= current_user.username %>'s Studios </h3>
+
+<% @studios.each do |s| %>
+<%= link_to s.name, studio_path(s) %><br>
+<% end %>
