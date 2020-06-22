@@ -1,65 +1,59 @@
 class StudentsController < ApplicationController
+  before_action :set_yoga_class, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  before_action :set_student, only: [:update, :destroy]
     
-    def index 
-        @students = YogaClass.find(params[:yoga_class_id]).students
+    def index  
+      @students = @yoga_class.students.find_by(id: params[:yoga_class_id])
     end   
   
     def new 
       if params[:yoga_class_id] && !YogaClass.exists?(params[:yoga_class_id])
         redirect_to yoga_classes_path, alert: "Yoga class not found."
       else 
-        @student = Student.new(yoga_class_id: params[:yoga_class_id]) 
+         @student = @yoga_class.students.build(yoga_class_id: params[:yoga_class_id])
       end 
     end
     
     def create
-      @student = Student.new(student_params)
+      @student = @yoga_class.students.new(student_params)
         if @student.valid?
           @student.save
-          redirect_to @student
+          redirect_to yoga_class_student_path(@yoga_class, @student)
         else 
           render :new
         end 
     end
 
     def show 
-      
-      if params[:yoga_class_id]
-        @yoga_class = YogaClass.find_by(id: params[:yoga_class_id])
-        @student = @yoga_class.students.find_by(id: params[:id])
-        if @student.nil?
-          redirect_to yoga_class_students_path(@yoga_class), alert: "Student not found."
+      if @yoga_class.nil?
+        redirect_to yoga_classes_path, alert: "Yoga class not found."
+      else set_student 
+        if 
+          @student.nil?
+          redirect_to yoga_class_path(@yoga_class), alert: "Student not found."
         end 
-      else 
-        @student = Student.find_by(id: params[:id])
       end 
     end 
     
     def edit 
-      if params[:yoga_class_id]
-      @yoga_class = YogaClass.find_by(id: params[:yoga_class_id])
-        if @yoga_class.nil?
-          redirect_to yoga_classes_path, alert: "Yoga Class not found."
-        else 
-          @student = @yoga_class.students.find_by(id: params[:id])
-          redirect_to yoga_class_students_path(@yoga_class), alert: "Student not found." if @student.nil?
+      if @yoga_class.nil?
+        redirect_to yoga_classes_path, alert: "Yoga class not found."
+      else set_student 
+        if @student.nil?
+        redirect_to yoga_class_path(@yoga_class), alert: "Student not found."
         end 
-      else 
-        @student = Student.find_by(id: params[:id])
       end 
     end 
 
     def update
-      @student = Student.find_by(id: params[:id])
       if @student.update(student_params)
-        redirect_to @student 
+        redirect_to yoga_class_student_path(@yoga_class, @student)
       else 
         render :edit
       end 
     end 
 
     def destroy
-      @student = Student.find_by(id: params[:id])
       @student.destroy 
       flash[:notice] = "Student deleted."
       redirect_to yoga_class_path(@student.yoga_class)
@@ -67,6 +61,14 @@ class StudentsController < ApplicationController
 
 
       private
+
+        def set_yoga_class
+          @yoga_class = YogaClass.find_by(id: params[:yoga_class_id])
+        end 
+
+        def set_student
+          @student = @yoga_class.students.find_by(id: params[:id])
+        end 
 
         def student_params
             params.require(:student).permit(:name, :yoga_class_id)

@@ -7,9 +7,9 @@
 <br>
 
 <% if @yoga_class.students.any?%>
-    <h4>Students:</h4>
+    <h3><%= link_to "Students", yoga_class_students_path(@yoga_class) %></h3>
     <% @yoga_class.students.each do |student| %>
-    <%= link_to student.name, student_path(student) %><br>
+    <%= link_to student.name, yoga_class_student_path(@yoga_class, student) %><br>
     <% end %>
 <br></br>
 <% end %>

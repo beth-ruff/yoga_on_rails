@@ -1,9 +1,10 @@
 
-<h3>Students:</h3>
+<h3>Students signed up for <%= @yoga_class.name %>:</h3>
 
-    <% @students.each do |student| %>
-    <p><%= link_to student.name, student_path(student) %>
+    <% @yoga_class.students.each do |student| %>
+    <p><%= link_to student.name, yoga_class_student_path(@yoga_class, student) %><br>
 <% end %>
 <br></br>
 
+<%= link_to "Back to Class Details", yoga_class_path(@yoga_class) %><br>
 <%= link_to "Back to Class Index", yoga_classes_path %>

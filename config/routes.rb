@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
   
   resources :yoga_classes do 
-    resources :students, only: [:index, :show, :new, :edit]
+    resources :students
   end 
-
-  resources :students
 
   resources :studios, only: [:index, :show]
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

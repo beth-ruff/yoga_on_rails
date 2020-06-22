@@ -1,8 +1,9 @@
 <h3>New Student Added:</h3>
 <p><%= @student.name %></p>
-<p>is signed up for <%= link_to @student.yoga_class.name, yoga_class_path(@student.yoga_class) if @student.yoga_class %>
+<p>is signed up for <%= @student.yoga_class.name %>
 (<%= link_to "Edit Student", edit_yoga_class_student_path(@student.yoga_class, @student) if @student.yoga_class %>)</p>
 <br></br>
 
 <%= link_to "Delete Student", { action: :destroy, id: @student.id }, method: :delete, data: { confirm: 'Are you sure?' } %><br>
+<%= link_to "Back to Class Details", yoga_class_path(@yoga_class) %><br>
 <%= link_to "Back to Class Index", yoga_classes_path %><br>

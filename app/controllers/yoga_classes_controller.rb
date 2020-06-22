@@ -1,5 +1,6 @@
 class YogaClassesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_yoga_class, only: [:show, :edit, :update, :destroy]
 
   def index
     @yoga_classes = current_user.yoga_classes.future_classes
@@ -8,7 +9,7 @@ class YogaClassesController < ApplicationController
 
   def new
     @yoga_class = current_user.yoga_classes.build
-    @studio = @yoga_class.build_studio 
+     
   end
 
   def create
@@ -22,15 +23,18 @@ class YogaClassesController < ApplicationController
   end
 
   def show 
-    @yoga_class = current_user.yoga_classes.find_by(id: params[:id])
+    if @yoga_class.nil?
+      redirect_to yoga_classes_path, alert: "Yoga class not found."
+    end 
   end 
 
   def edit
-    @yoga_class = current_user.yoga_classes.find_by(id: params[:id])
+    if @yoga_class.nil?
+      redirect_to yoga_classes_path, alert: "Yoga class not found."
+    end 
   end
 
   def update
-    @yoga_class = current_user.yoga_classes.find_by(id: params[:id])
       if @yoga_class.update(yoga_class_params)
         redirect_to yoga_class_path(@yoga_class) 
       else 
@@ -39,13 +43,16 @@ class YogaClassesController < ApplicationController
   end
 
   def destroy
-    @yoga_class = YogaClass.find_by(id: params[:id])
     @yoga_class.destroy 
     flash[:notice] = "Yoga class deleted."
     redirect_to yoga_classes_path
   end
 
   private
+
+    def set_yoga_class
+      @yoga_class = current_user.yoga_classes.find_by(id: params[:id])
+    end 
 
     def yoga_class_params
       params.require(:yoga_class).permit(:user_id, :name, :length, :date, :time, :difficulty, :studio_id, studio_attributes: [:name, :address, :phone_number])
