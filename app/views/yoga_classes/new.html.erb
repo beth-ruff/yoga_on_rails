@@ -1,48 +1,6 @@
 <h1>Add a new class</h1>
 
-<%= form_for @yoga_class do |f| %>
-
-    <% if @yoga_class.errors.any? %>
-        <div id="error_explanation">
-            <h2>
-            <%= pluralize(@yoga_class.errors.count, "error") %>
-            prohibited this yoga class from being saved:
-            </h2>
- 
-        <ul>
-            <% @yoga_class.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-            <% end %>
-        </ul>
-        </div>
-    <% end %>
-
-<%= f.label :name %>
-<%= f.text_field :name %><br>
-<%= f.label :length%>
-<%= f.text_field :length %><br>
-<%= f.label :difficulty%>
-<%= f.select(:difficulty, YogaClass::DIFFICULTY_LIST )%><br>
-<%= f.label :date%>
-<%= f.date_field :date %><br>
-<%= f.label :time %>
-<%= f.time_field :time %><br>
-<%= f.label "Select a Studio" %>
-<%= f.collection_select :studio_id, Studio.all, :id, :name, include_blank: true %><br>
-
-<h3>Or Add a New Studio:</h3>
-<%= f.fields_for :studio, @studio do |studio| %>
-    <%= studio.label "Or create a new one:" %><br>
-    <%= studio.label :name %>
-    <%= studio.text_field :name %><br>
-    <%= studio.label :address %>
-    <%= studio.text_field :address %><br>
-    <%= studio.label :phone_number %>
-    <%= studio.text_field :phone_number %><br>
-    <% end %>
-
-<%= f.submit "Create Yoga Class", class: "btn btn-large btn-primary" %>
-<% end %>
+<%= render 'form' %>
 
 <br></br>
 <%= link_to "Back to Yoga Class Index", yoga_classes_path %>

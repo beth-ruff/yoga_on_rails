@@ -2,7 +2,7 @@ class YogaClassesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @yoga_classes = current_user.yoga_classes
+    @yoga_classes = current_user.yoga_classes.future_classes
     @yoga_classes = @yoga_classes.order(date: :asc)
   end
 
@@ -26,9 +26,16 @@ class YogaClassesController < ApplicationController
   end 
 
   def edit
+    @yoga_class = current_user.yoga_classes.find_by(id: params[:id])
   end
 
   def update
+    @yoga_class = current_user.yoga_classes.find_by(id: params[:id])
+      if @yoga_class.update(yoga_class_params)
+        redirect_to yoga_class_path(@yoga_class) 
+      else 
+        render :new
+      end 
   end
 
   def delete

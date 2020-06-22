@@ -4,14 +4,16 @@
 <p>Studio: <%= @yoga_class.studio.name %></p>
 <p>Level: <%= @yoga_class.difficulty %></p><br>
 
-<% if @yoga_class.students.exists? %>
-    <h3>Students:</h3>
-    <% @yoga_class.students.each do |student| %>
-    <p><%= student.name %></p>
-    <% end %>
-<% end %>
+<br>
 
+
+<h4>Students:</h4>
+<% @yoga_class.students.each do |student| %>
+<%= link_to student.name, student_path(student) %><br>
+<% end %>
+<%= link_to "Add Student", new_yoga_class_student_path(@yoga_class) %>
 <br></br>
 
-<%= link_to "Add Student", new_yoga_class_student_path(@yoga_class) %><br>
+
+<%= link_to "Edit Class", edit_yoga_class_path(@yoga_class) %><br>
 <%= link_to "Back to Class Index", yoga_classes_path %><br>

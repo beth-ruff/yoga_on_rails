@@ -9,7 +9,8 @@ class YogaClass < ApplicationRecord
     validates :time, presence: true
     validates :studio, presence: true
     accepts_nested_attributes_for :studio, reject_if: :all_blank
-
+    scope :future_classes, -> { where('date >= ?', Date.today) }
+    
     DIFFICULTY_LIST = ["Beginner", "Intermediate", "Advanced", "All Levels"]
 
     def yoga_class_date

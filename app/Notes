@@ -10,7 +10,25 @@
 
 To-DO:
 - fix class index page (list classes by day) X
-- add validations
-- AR scope method
-- partials / add edit class form 
+- add validations (still need to fix fields_for)
+- AR scope method X
+- partials / add edit class form X
 - CSS!
+
+
+STUDENTS
+Class show Page: yoga_class/1 (link to "Students")
+Student show Page: yoga_class/1/students (link to "Add Student")
+Once student is added, it returns to show page
+
+
+                    yoga_class_students GET      /yoga_classes/:yoga_class_id/students(.:format)                                          students#index    
+                   yoga_class_student GET      /yoga_classes/:yoga_class_id/students/:id(.:format)                                      students#show
+                             students GET      /students(.:format)                                                                      students#index
+                                      POST     /students(.:format)                                                                      students#create
+                          new_student GET      /students/new(.:format)                                                                  students#new
+                         edit_student GET      /students/:id/edit(.:format)                                                             students#edit
+                              student GET      /students/:id(.:format)                                                                  students#show
+                                      PATCH    /students/:id(.:format)                                                                  students#update
+                                      PUT      /students/:id(.:format)                                                                  students#update
+                                      DELETE   /students/:id(.:format)                                                                  students#destroy
