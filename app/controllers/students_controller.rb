@@ -58,6 +58,13 @@ class StudentsController < ApplicationController
       end 
     end 
 
+    def destroy
+      @student = Student.find_by(id: params[:id])
+      @student.destroy 
+      flash[:notice] = "Student deleted."
+      redirect_to yoga_class_path(@student.yoga_class)
+    end
+
 
       private
 

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   resources :yoga_classes do 
-    resources :students, only: [:index, :show, :new, :create, :edit, :update]
+    resources :students, only: [:index, :show, :new, :edit]
   end 
 
   resources :students

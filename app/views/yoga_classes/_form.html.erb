@@ -26,11 +26,10 @@
 <%= f.label :time %>
 <%= f.time_field :time %><br>
 <%= f.label "Select a Studio" %>
-<%= f.collection_select :studio_id, Studio.all, :id, :name, include_blank: true %><br>
+<%= f.collection_select :studio_id, Studio.all.uniq, :id, :name, {:include_blank => "Please select"} %><br>
 
 <h3>Or Add a New Studio:</h3>
 <%= f.fields_for :studio, @studio do |studio| %>
-    <%= studio.label "Or create a new one:" %><br>
     <%= studio.label :name %>
     <%= studio.text_field :name %><br>
     <%= studio.label :address %>

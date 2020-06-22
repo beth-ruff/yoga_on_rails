@@ -38,7 +38,11 @@ class YogaClassesController < ApplicationController
       end 
   end
 
-  def delete
+  def destroy
+    @yoga_class = YogaClass.find_by(id: params[:id])
+    @yoga_class.destroy 
+    flash[:notice] = "Yoga class deleted."
+    redirect_to yoga_classes_path
   end
 
   private

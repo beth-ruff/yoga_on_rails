@@ -1,5 +1,5 @@
 1. Welcome page links to classes index page and studios index page X
-2. Class Index page has list of user's(teacher) yoga classes by day that link to the yoga class show page /yoga_classes
+2. Class Index page has list of user's(teacher) yoga classes by day that link to the yoga class show page /yoga_classes X
 3. Users(teachers) can add new yoga classes /yoga_classes/new *note: can select from existing studio or make a new studio (nested form) X
 4. User's/teacher's yoga class show page /yoga_classes/:id *note: "add student" button X
 5. User/Teacher can add student to given yoga class /yoga_classes/:yoga_class_id/student/new X
@@ -10,7 +10,7 @@
 
 To-DO:
 - fix class index page (list classes by day) X
-- add validations (still need to fix fields_for)
+- add validations (still need to fix fields_for) X
 - AR scope method X
 - partials / add edit class form X
 - CSS!
@@ -20,15 +20,3 @@ STUDENTS
 Class show Page: yoga_class/1 (link to "Students")
 Student show Page: yoga_class/1/students (link to "Add Student")
 Once student is added, it returns to show page
-
-
-                    yoga_class_students GET      /yoga_classes/:yoga_class_id/students(.:format)                                          students#index    
-                   yoga_class_student GET      /yoga_classes/:yoga_class_id/students/:id(.:format)                                      students#show
-                             students GET      /students(.:format)                                                                      students#index
-                                      POST     /students(.:format)                                                                      students#create
-                          new_student GET      /students/new(.:format)                                                                  students#new
-                         edit_student GET      /students/:id/edit(.:format)                                                             students#edit
-                              student GET      /students/:id(.:format)                                                                  students#show
-                                      PATCH    /students/:id(.:format)                                                                  students#update
-                                      PUT      /students/:id(.:format)                                                                  students#update
-                                      DELETE   /students/:id(.:format)                                                                  students#destroy

@@ -6,14 +6,15 @@
 
 <br>
 
-
-<h4>Students:</h4>
-<% @yoga_class.students.each do |student| %>
-<%= link_to student.name, student_path(student) %><br>
-<% end %>
-<%= link_to "Add Student", new_yoga_class_student_path(@yoga_class) %>
+<% if @yoga_class.students.any?%>
+    <h4>Students:</h4>
+    <% @yoga_class.students.each do |student| %>
+    <%= link_to student.name, student_path(student) %><br>
+    <% end %>
 <br></br>
+<% end %>
 
-
+<%= link_to "Add Student", new_yoga_class_student_path(@yoga_class) %><br>
+<%= link_to "Delete Class", { action: :destroy, id: @yoga_class.id }, method: :delete, data: { confirm: 'Are you sure?' } %><br>
 <%= link_to "Edit Class", edit_yoga_class_path(@yoga_class) %><br>
 <%= link_to "Back to Class Index", yoga_classes_path %><br>
