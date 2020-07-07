@@ -3,6 +3,10 @@ class YogaClassesController < ApplicationController
   before_action :set_yoga_class, only: [:show, :edit, :update, :destroy]
 
   def index
+    if params[:past_classes]
+      @past_yoga_classes = current_user.yoga_classes.past_classes
+      @past_yoga_classes = @past_yoga_classes.order(date: :asc)
+    end 
     @yoga_classes = current_user.yoga_classes.future_classes
     @yoga_classes = @yoga_classes.order(date: :asc)
   end
@@ -55,7 +59,8 @@ class YogaClassesController < ApplicationController
     end 
 
     def yoga_class_params
-      params.require(:yoga_class).permit(:user_id, :name, :length, :date, :time, :difficulty, :studio_id, studio_attributes: [:name, :address, :phone_number])
+      # raise params.inspect 
+      params.require(:yoga_class).permit(:user_id, :name, :length, :date, :time, :difficulty, :past_classes, :studio_id, studio_attributes: [:name, :address, :phone_number])
     end 
 
 end

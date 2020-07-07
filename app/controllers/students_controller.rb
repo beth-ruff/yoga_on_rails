@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_action :set_yoga_class, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  before_action :set_yoga_class
   before_action :set_student, only: [:update, :destroy]
     
     def index  
