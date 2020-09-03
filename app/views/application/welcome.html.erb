@@ -1,6 +1,6 @@
-<h1>Welcome to Yoga on Rails!</h1>
-
 <% if user_signed_in? %>
+<div class="container-fluid text-center">
 <%= link_to "Yoga Class Index", yoga_classes_path %><br>
 <%= link_to "Studio Index", studios_path %>
+</div>
 <% end %>

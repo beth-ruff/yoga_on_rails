@@ -9,14 +9,26 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-<div class="header">
-<%= image_tag("header.jpg")%>
-</div>
+  <nav>
+    <%= render 'layouts/nav'%>
+  </nav>
+
+  <header>
+  <% if user_signed_in? %>
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="display-3">Welcome to YogaOnRails!</h1>
+        <p>A space for yoga teachers to manage their classes and studios.</p>
+      </div>
+    </div>
+  <% end %>
+  </header>
 
   <body>
+  <div class="container-fluid text-center">
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= render 'layouts/nav'%>
     <%= yield %>
+  </div>
   </body>
 </html>

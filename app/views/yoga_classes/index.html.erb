@@ -1,9 +1,8 @@
-
 <% if @past_yoga_classes %>
 <h1>Past Yoga Classes</h1>
+<hr>
     <% @past_yoga_classes.group_by(&:yoga_class_date).each do |yoga_class_date, yoga_class| %>
-    <div id="day">
-    <h3><%= yoga_class_date %></h3>
+    <p class="font-weight-bold"><%= yoga_class_date %></p>
         <% yoga_class.each do |p| %>
         <%= link_to p.name, yoga_class_path(p) %><br>
     <% end %>
@@ -12,10 +11,10 @@
 <br></br>
 
 <h1>Upcoming Yoga Classes</h1>
-
+<hr>
 <% @yoga_classes.group_by(&:yoga_class_date).each do |yoga_class_date, yoga_class| %>
-<div id="day">
-    <h3><%= yoga_class_date %></h3>
+<div>
+    <p class="font-weight-bold"><%= yoga_class_date %></p>
         <% yoga_class.each do |c| %>
         <%= link_to c.name, yoga_class_path(c) %><br>
     <% end %>
@@ -23,7 +22,9 @@
 </div>
 <br></br>
 
-<%= button_to "Show Previous Classes", yoga_classes_path, method: :get, params: { past_classes: true } %><br>
+<div>
+<%= button_to "Show Previous Classes", yoga_classes_path, method: :get, params: { past_classes: true }, class: "btn btn-outline-secondary"%><br>
 <%= link_to "Add a class", new_yoga_class_path %><br>
 <%= link_to "Studio Index", studios_path %>
+</div>
 
